@@ -1,0 +1,85 @@
+/* --------------------------- MESSAGES */
+/* Inbox/Outbox */
+.messages .item {
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: white;
+  margin: 15px 0;
+  padding: 10px;
+  text-align: left;
+  color: #444;
+  cursor: pointer;
+}
+
+.messages .item.unread {
+  font-weight: bold;
+}
+
+.messages .avatar-wrap {
+  width: 45px;
+  float: left;
+  margin-right: 5px;
+}
+
+.messages .details {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.6em;
+}
+
+.messages .name {
+  color: #444;
+  font-size: 1.3em;
+}
+
+.messages .time {
+  color: #777;
+  float: right;
+}
+
+.messages .preview {
+  color: #777;
+  font-weight: normal;
+}
+
+/* Message Detail View */
+.messages .reply {
+  float: right;
+}
+/* Override image avatar size for messages via more specific */
+div#content.message.drop-full div.base section.drop-source a.avatar-wrap {
+  width: 40px;
+}
+
+/* Message Create Modal */
+article.modal div.create-new p.button-blue.send a {
+  margin-top: 20px;
+}
+article.modal div.create-new p.message-status {
+  display: inline-block;
+}
+article.modal #recipient-lookup {
+  position: absolute;
+  margin-top: -1px;
+  background-color: white;
+  border: 1px solid #E0E0E0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #444;
+  font-size: 0.9em;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  display: none;
+}
+article.modal #recipient-lookup li {
+  padding: 5px;
+  cursor: pointer;
+}
+article.modal #recipient-lookup li:hover {
+  font-weight: bold;
+}
