@@ -44,7 +44,7 @@ class Controller_Messages extends Controller_User {
 		if ($this->id)
 			return $this->action_inbox_read();
 
-		$messages = ORM::factory('message')
+		$messages = ORM::factory('Message')
 			->where('recipient_id', '=', $this->user->id)
 			->order_by('read', 'asc')
 			->order_by('timestamp', 'desc')
@@ -61,7 +61,7 @@ class Controller_Messages extends Controller_User {
 
 	public function action_inbox_read()
 	{
-		$message = ORM::factory('message', $this->id);
+		$message = ORM::factory('Message', $this->id);
 
 		// CHECK: Are you the recipient of this message?
 		if ( ! $message->is_recipient())
@@ -85,7 +85,7 @@ class Controller_Messages extends Controller_User {
 		if ($this->id)
 			return $this->action_outbox_read();
 
-		$messages = ORM::factory('message')
+		$messages = ORM::factory('Message')
 			->where('sender_id', '=', $this->user->id)
 			->order_by('timestamp', 'desc')
 			->find_all()
@@ -101,7 +101,7 @@ class Controller_Messages extends Controller_User {
 
 	public function action_outbox_read()
 	{
-		$message = ORM::factory('message', $this->id);
+		$message = ORM::factory('Message', $this->id);
 
 		// CHECK: Are you the sender of this message?
 		if ( ! $message->is_sender())
@@ -143,7 +143,7 @@ class Controller_Messages extends Controller_User {
 			return;
 		}
 
-		$recipient = ORM::factory('account')
+		$recipient = ORM::factory('Account')
 			->where('account_path', '=', $params['recipient'])
 			->find();
 
@@ -163,7 +163,7 @@ class Controller_Messages extends Controller_User {
 			return;
 		}
 
-		$last = ORM::factory('message')
+		$last = ORM::factory('Message')
 			->where('sender_id', '=', $this->user->id)
 			->order_by('timestamp', 'desc')
 			->find();
@@ -186,7 +186,7 @@ class Controller_Messages extends Controller_User {
 			return;
 		}
 
-		$message = ORM::factory('message');
+		$message = ORM::factory('Message');
 		$message->recipient_id = $recipient->user_id;
 		$message->sender_id = $this->user->id;
 		$message->subject = HTML::entities($params['subject']);
